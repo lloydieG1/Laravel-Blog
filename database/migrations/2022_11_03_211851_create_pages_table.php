@@ -15,8 +15,11 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->longText('description');
+            $table->timestamps();
+
+            $table->unsignedBigInteger('profile_id');
+            #foreign key user id
 
         });
     }

@@ -15,8 +15,15 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->longText('body')
+            $table->bigInteger('likes');
+            $table->longText('body');
+            $table->string('image_url')->nullable();
+            $table->dateTime('date_posted');
             $table->timestamps();
+
+            $table->unsignedBigInteger('page_id');
+            #foreign key page_id
+
         });
     }
 
