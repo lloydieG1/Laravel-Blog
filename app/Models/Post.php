@@ -18,4 +18,10 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
+    
+    public function page()
+    {
+        return $this->belongsTo(Page::class);
+    }
+    
 }
