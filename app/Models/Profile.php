@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     use HasFactory;
+
+    public function page()
+    {
+        return $this->hasOne(Page::class);
+    }
 }
