@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
 
-            $table->unsignedBigInteger('post_id');
-            # foreign key post_id
+            # needs pivot table tag_post
         });
     }
 
