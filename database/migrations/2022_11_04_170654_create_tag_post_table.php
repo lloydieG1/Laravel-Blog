@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tag_post', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['tag_id', 'post_id']);
+            $table->bigInteger('tag_id')->unsigned();
+            $table->bigInteger('post_id')->unsigned();
             $table->timestamps();
+
+            
         });
     }
 
