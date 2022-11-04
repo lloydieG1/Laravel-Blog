@@ -18,8 +18,8 @@ return new class extends Migration
             $table->longText('description');
             $table->timestamps();
 
-            $table->unsignedBigInteger('profile_id');
-            $table->foreign('profile_id')->references('id')->on('profiles')
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onDelete('cascade')->onUpdate('cascade');
 
         });
