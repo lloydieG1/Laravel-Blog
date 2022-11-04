@@ -22,7 +22,8 @@ return new class extends Migration
             $table->timestamps();
 
             $table->unsignedBigInteger('page_id');
-            #foreign key page_id
+            $table->foreign('page_id')->references('id')->on('pages')
+                ->onDelete('cascade')->onUpdate('cascade');
 
         });
     }
