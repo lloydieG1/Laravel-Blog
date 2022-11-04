@@ -20,6 +20,10 @@ class CommentTableSeeder extends Seeder
 
         $c1->likes = 10;
         $c1->body = 'I like your page';
-        $c1->date_commented = 
+        $c1->date_commented = '2022-11-04 20:26:43';
+        $c1->commentable_id = 1;
+        $c1->commentable_type = 'page';
+        
+        $c1->save();
     }
 }

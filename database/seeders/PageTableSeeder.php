@@ -16,5 +16,11 @@ class PageTableSeeder extends Seeder
     public function run()
     {
         //
+        $p1 = new Page;
+
+        $p1->description = 'welcome to my page!';
+        $p1->user_id = 1;
+
+        $p1->save();
     }
 }
