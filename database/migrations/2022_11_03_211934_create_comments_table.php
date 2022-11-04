@@ -22,7 +22,6 @@ return new class extends Migration
 
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
-            #foreign key post_id OR page_id (polymorphic)
         });
     }
 
