@@ -15,7 +15,7 @@ class PostTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // single manual row
         $p1 = new Post;
 
         $p1->likes = 100;

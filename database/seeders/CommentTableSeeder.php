@@ -15,7 +15,7 @@ class CommentTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // single manual row
         $c1 = new Comment;
 
         $c1->likes = 10;
@@ -25,5 +25,6 @@ class CommentTableSeeder extends Seeder
         $c1->commentable_type = 'page';
         
         $c1->save();
+
     }
 }

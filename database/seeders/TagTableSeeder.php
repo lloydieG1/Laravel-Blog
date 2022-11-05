@@ -15,11 +15,12 @@ class TagTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // single manual row
         $t1 = new Tag;
 
         $t1->name = 'miscellaneous';
         
         $t1->save();
+
     }
 }
