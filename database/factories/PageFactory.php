@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Page>
@@ -17,7 +18,8 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'description' => fake()->paragraph(),
+            'user_id' => User::factory()
         ];
     }
 }
