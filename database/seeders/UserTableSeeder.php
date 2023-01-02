@@ -28,7 +28,7 @@ class UserTableSeeder extends Seeder
         $u1->save();
 
         // Generate fake data for all tables with corerct relationships
-        $numUsers = 10;
+        $numUsers = 50;
         $pagesPerUser = 1;
         $postsPerPage = 5;
         $commentsPerPost = 5;
