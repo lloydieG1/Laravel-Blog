@@ -14,14 +14,14 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('users.profile', [
+        return view('users.page', [
             'user' => User::findOrFail($id)
         ]);
     }
 
     public function index()
     {
-        $users = User::all();
+        $users = User::simplePaginate(10);
         return view('users.index', ['users' => $users]);
     }
 
