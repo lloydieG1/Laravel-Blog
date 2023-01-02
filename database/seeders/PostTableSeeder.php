@@ -25,5 +25,8 @@ class PostTableSeeder extends Seeder
         $p1->page_id = 1;
 
         $p1->save();
+
+        Post::factory()->count(2)->create();
+
     }
 }

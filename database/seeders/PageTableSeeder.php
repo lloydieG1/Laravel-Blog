@@ -25,5 +25,6 @@ class PageTableSeeder extends Seeder
 
         $p1->save();
 
+        Page::factory()->count(2)->create();
     }
 }
