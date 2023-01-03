@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PageController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,12 +18,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home');
+})->name('home');
 
 Route::get('/users', [UserController::class,'index'])->name('users.index');
 
 Route::get('/users/{id}', [UserController::class,'show'])->name('users.show');
+
+Route::get('/logout', [UserController::class,'logout'])->name('users.logout');
+
+// middleware(['auth']) means that the user must be logged in to access that route
+
+Route::get('/mypage', [PageController::class,'show'])->middleware(['auth'])->name('mypage.show');
+
+Route::get('/mypage/createpost', [PostController::class,'create'])->middleware(['auth'])->name('post.create');
+
+Route::post('/mypage/storepost', [PostController::class,'store'])->middleware(['auth'])->name('post.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
