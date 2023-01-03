@@ -20,8 +20,8 @@ class PostFactory extends Factory
         return [
             'likes' => fake()->randomNumber(),
             'body' => fake()->paragraph(),
+            'title' => fake()->sentence(),
             'image_url' => fake()->url(),
-            'date_posted' => fake()->dateTime(),
             'page_id' => Page::factory()
         ];
     }
