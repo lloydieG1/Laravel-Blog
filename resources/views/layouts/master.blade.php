@@ -9,10 +9,14 @@
             <a href="/">Home</a>
             <a href="/users">Users</a>
             <a href="/tags">Tags</a>
-            <a href="/mypage">My page</a>
             <a href="/register">Register</a>
             @if (auth()->check())
-                <a href="/mypage/createpost">Create Post</a>
+                @if (is_null(Auth::user()->page))
+                    <a href="{{ route('page.create') }}">Create page</a>
+                @else
+                    <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}">My page</a>
+                    <a href="/page/createpost">Create Post</a>
+                @endif
                 <a href="/logout">Log out</a>
             @else
                 <a href="/login">Log in</a>
