@@ -29,8 +29,6 @@ Route::get('/logout', [UserController::class,'logout'])->name('users.logout');
 
 // middleware(['auth']) means that the user must be logged in to access that route
 
-Route::get('/page/{id}', [PageController::class,'show'])->middleware(['auth'])->name('page.show');
-
 Route::get('/page/create', [PageController::class,'create'])->middleware(['auth'])->name('page.create');
 
 Route::post('/page/store', [PageController::class,'store'])->middleware(['auth'])->name('page.store');
@@ -38,6 +36,8 @@ Route::post('/page/store', [PageController::class,'store'])->middleware(['auth']
 Route::get('/page/createpost', [PostController::class,'create'])->middleware(['auth'])->name('post.create');
 
 Route::post('/page/storepost', [PostController::class,'store'])->middleware(['auth'])->name('post.store');
+
+Route::get('/page/{id}', [PageController::class,'show'])->middleware(['auth'])->name('page.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
