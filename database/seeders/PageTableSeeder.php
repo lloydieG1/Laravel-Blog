@@ -17,6 +17,15 @@ class PageTableSeeder extends Seeder
      */
     public function run()
     {
+        // single manual row
+        $p1 = new Page;
+
+        $p1->title = 'my bloggie';
+        $p1->description = 'welcome to my page!';
+        $p1->user_id = 1;
+
+        $p1->save();
+
         Page::factory()->count(2)->create();
     }
 }
