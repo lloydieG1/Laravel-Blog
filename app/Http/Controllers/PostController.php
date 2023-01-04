@@ -21,7 +21,6 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -39,10 +38,16 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'tag' => 'nullable|max:30'
+            'tag' => 'nullable|max:30',
+            'page_id' => 'required|integer'
         ]);
-        $post = Post::create($validatedData);
-        return redirect('/posts/' . $post->id);
+        $post = new Post;
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->page_id = $validatedData['page_id'];
+        $post->save();
+
+        return redirect('/page/' . $validatedData['page_id']);
     }
 
     /**
