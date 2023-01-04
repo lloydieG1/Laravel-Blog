@@ -16,7 +16,7 @@ class PageController extends Controller
         //$debug = Page::findOrFail($id);
         //dd($debug);
         return view('page.show', [
-            'page.show' => Page::findOrFail($id)
+            'page' => Page::findOrFail($id)
         ]);
     }
 
