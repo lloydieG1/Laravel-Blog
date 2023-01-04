@@ -9,6 +9,11 @@ class Page extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description'
+    ];
+
     public function posts()
     {
         return $this->hasMany(Post::class);
