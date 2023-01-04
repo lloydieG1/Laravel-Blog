@@ -9,7 +9,7 @@
         <p>Body: <input type="text" name="body" value="{{ old('body') }}"></p>
         <p>Tag: <input type="text" name="tag" value="{{ old('tag') }}"></p>
         <input type="submit" value="Submit">
-        <input type="hidden" name="page_id" value="1">
-        <a href="{{ route('mypage.show') }}">Cancel</a>
+        <input type="hidden" name="page_id" value="{{ Auth::user()->page->id }}">
+        <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}">Cancel</a>
     </form>
 @endsection
