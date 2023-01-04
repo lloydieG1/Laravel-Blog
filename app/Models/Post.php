@@ -9,6 +9,16 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'body'
+    ];
+
+    protected $attributes = [
+        'title' => 'Untitled',
+        'body' => '',
+        'likes' => 0,
+    ];
+
     public function comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
