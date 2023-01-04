@@ -18,6 +18,7 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
+            'title' => fake()->paragraph(),
             'description' => fake()->paragraph(),
             'user_id' => User::factory()
         ];
