@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
  
 use App\Models\User;
+use App\Models\Page;
  
 class UserController extends Controller
 {
@@ -12,8 +13,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return view('users.page', [
-            'user' => User::findOrFail($id)
+        return view('page.show', [
+            'page' => Page::findOrFail($id)
         ]);
     }
 
