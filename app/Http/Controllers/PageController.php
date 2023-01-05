@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\Page;
 
 class PageController extends Controller
 {
     /**
      * Display the specified user's page.
-     * 
+     *
      */
     public function show($id)
-    {   
+    {
         //$debug = Page::findOrFail($id);
         //dd($debug);
         return view('page.show', [
@@ -40,9 +39,9 @@ class PageController extends Controller
         $page->description = $validatedData['description'];
         $page->user_id = $validatedData['user_id'];
         $page->save();
-        
+
         session()->flash('message', 'Page was created');
-        
+
         return redirect('/page/' . $page->id);
     }
 }
