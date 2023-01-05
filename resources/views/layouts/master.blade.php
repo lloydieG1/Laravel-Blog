@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>Blog - @yield('title')</title>
-        <link rel="stylesheet" href="/css/app.css">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="bg-blue-700">
+    <body class="bg-slate-200">
         <nav class="content-center">
             <a href="/">Home</a>
             <a href="/users">Users</a>
@@ -28,5 +30,7 @@
         <div class="container">
             @yield('content')
         <div>
+
     </body>
+
 </html>
