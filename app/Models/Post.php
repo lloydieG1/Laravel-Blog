@@ -9,6 +9,10 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'image_url' => 'string',
+    ];
+
     protected $fillable = [
         'body'
     ];
@@ -28,10 +32,10 @@ class Post extends Model
     {
         return $this->belongsToMany(Tag::class);
     }
-    
+
     public function page()
     {
         return $this->belongsTo(Page::class);
     }
-    
+
 }
