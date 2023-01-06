@@ -12,16 +12,17 @@
     </div>
   </div>
   <div class="mb-8">
-    {!! $post->body !!}
+    {{ $post->body }}
   </div>
   <div class="mb-8">
-    <h2 class="text-2xl font-bold text-gray-800 mb-4">Comments</h2>
+
+
     <ul class="list-reset">
       @foreach ($post->comments as $comment)
         <li class="mb-4">
           <div class="bg-gray-200 p-4 rounded-md">
             <div class="text-gray-600 font-bold mb-2">
-              by <a href="/users/{{ $comment->commentable }}">{{ $comment->commentable->name }}</a>
+              by <a href="/users/{{ $comment->user->page->id }}">{{ $comment->user->name }}</a>
               on {{ $comment->created_at->format('F j, Y') }}
             </div>
             <div class="text-gray-700">{{ $comment->body }}</div>
