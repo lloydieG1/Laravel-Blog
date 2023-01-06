@@ -10,19 +10,19 @@
         <nav class="bg-white py-6 shadow-md">
             <div class="container mx-auto px-6 flex items-center justify-between">
                 <a href="/"><img src="/images/logo.png" alt="Logo" class="h-20 w-200" height="20" width="200"></a>
-                <a href="/users" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Users</a>
-                <a href="/tags" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Tags</a>
+                <a href="/users" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Users</a>
+                <a href="/tags" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Tags</a>
                 @auth
                     @if (is_null(Auth::user()->page))
-                        <a href="{{ route('page.create') }}" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Create page</a>
+                        <a href="{{ route('page.create') }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Create page</a>
                     @else
-                        <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">My page</a>
-                        <a href="/page/createpost" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Create Post</a>
+                        <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">My page</a>
+                        <a href="/page/createpost" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Create Post</a>
                     @endif
-                    <a href="/logout" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Log out</a>
+                    <a href="/logout" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Log out</a>
                 @else
-                    <a href="/login" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Log in</a>
-                    <a href="/register" class="mr-4 text-gray-800 hover:text-gray-600 no-underline">Register</a>
+                    <a href="/login" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Log in</a>
+                    <a href="/register" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Register</a>
                 @endauth
             </div>
         </nav>
@@ -35,7 +35,7 @@
             </p>
         </div>
 
-        <div class="container" class="container mx-auto px-6 pt-10 pb-8">
+        <div class="rounded-md bg-white shadow-md container mx-auto px-6 pt-10 pb-8">
             @yield('content')
         <div>
 
