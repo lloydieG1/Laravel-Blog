@@ -37,9 +37,9 @@ Route::get('/page/createpost', [PostController::class,'create'])->middleware(['a
 
 Route::post('/page/storepost', [PostController::class,'store'])->middleware(['auth'])->name('post.store');
 
-Route::get('/posts/{post}', [PostController::class,'show'])->middleware(['auth'])->name('post.show');
+Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 
-Route::get('/page/{id}', [PageController::class,'show'])->middleware(['auth'])->name('page.show');
+Route::get('/page/{id}', [PageController::class,'show'])->name('page.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
