@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @livewireStyles
     </head>
     <body class="bg-slate-200 font-sans leading-normal tracking-normal">
         <nav class="bg-white py-6 shadow-md">
@@ -38,7 +39,7 @@
         <div class="rounded-md bg-white shadow-md container mx-auto px-6 pt-10 pb-8">
             @yield('content')
         <div>
-
+        @livewireScripts
     </body>
 
 </html>
