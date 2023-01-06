@@ -5,6 +5,7 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Page;
 use App\Models\Post;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Comment>
@@ -28,7 +29,7 @@ class CommentFactory extends Factory
         return [
             'likes' => fake()->randomNumber(),
             'body' => fake()->paragraph(),
-            'date_commented' => fake()->dateTime(),
+            'user_id' => User::all()->random()->id,
             'commentable_id' => $randomCommentableType::factory(),
             'commentable_type' => $randomCommentableType
         ];

@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->bigInteger('likes');
             $table->longText('body');
-            $table->dateTime('date_commented');
             $table->timestamps();
+
+            $table->unsignedBigInteger('user_id');
 
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
