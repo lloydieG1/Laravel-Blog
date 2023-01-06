@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -39,12 +40,17 @@ class PostController extends Controller
             'title' => 'required|max:255',
             'body' => 'required',
             'tag' => 'nullable|max:30',
+            'image_url' => 'image',
             'page_id' => 'required|integer'
         ]);
         $post = new Post;
         $post->title = $validatedData['title'];
         $post->body = $validatedData['body'];
         $post->page_id = $validatedData['page_id'];
+        if ($request->hasFile('image_url')) {
+            $post->image_url = $request->file('image_url')->store('images', 'public');
+        }
+
         $post->save();
 
         return redirect('/page/' . $validatedData['page_id']);
