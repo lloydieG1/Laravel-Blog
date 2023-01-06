@@ -39,6 +39,12 @@ Route::post('/page/storepost', [PostController::class,'store'])->middleware(['au
 
 Route::get('/posts/{post}', [PostController::class,'show'])->name('post.show');
 
+Route::get('/posts/{post}/edit', [PostController::class,'edit'])->name('post.edit');
+
+Route::patch('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 Route::get('/page/{id}', [PageController::class,'show'])->name('page.show');
 
 Route::get('/dashboard', function () {

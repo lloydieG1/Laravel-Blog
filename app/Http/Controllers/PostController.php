@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\Support\ValidatedData;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -75,6 +76,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (auth()->id() !== $post->page->user_id) {
+            abort(403);
+        }
+
         return view('posts.edit', compact('post'));
     }
 
@@ -90,8 +95,19 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
+            'tag' => 'nullable|max:30',
+            'image_url' => 'image',
+            'page_id' => 'required|integer'
         ]);
-        $post->update($validatedData);
+        $post->title = $validatedData['title'];
+        $post->body = $validatedData['body'];
+        $post->page_id = $validatedData['page_id'];
+        if ($request->hasFile('image_url')) {
+            $post->image_url = $request->file('image_url')->store('images', 'public');
+        }
+
+        $post->save();
+
         return redirect('/posts/' . $post->id);
     }
 
@@ -104,6 +120,6 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect('/posts');
+        return redirect()->route('page.show', ['id' => $post->page->id]);
     }
 }
