@@ -30,6 +30,9 @@
             <h1 class="text-4xl font-bold text-gray-800 text-center mb-8">
                 @yield('title')
             </h1>
+            <p class="text-gray-700 text-center">
+                @yield('description')
+            </p>
         </div>
 
         <div class="container" class="container mx-auto px-6 pt-10 pb-8">
