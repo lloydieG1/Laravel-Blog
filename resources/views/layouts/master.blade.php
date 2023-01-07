@@ -14,10 +14,13 @@
                 <a href="/users" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Users</a>
                 <a href="/tags" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Tags</a>
                 @auth
+                    @if (Auth::user()->role == 'admin')
+                        <a href="/tags/create" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Add tags</a>
+                    @endif
                     @if (is_null(Auth::user()->page))
-                        <a href="{{ route('page.create') }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Create page</a>
+                        <a href="{{ route('page.create') }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Create Page</a>
                     @else
-                        <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">My page</a>
+                        <a href="{{ route('page.show', ['id' => Auth::user()->page->id]) }}" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">My Page</a>
                         <a href="/page/createpost" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Create Post</a>
                     @endif
                     <a href="/logout" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Log out</a>
