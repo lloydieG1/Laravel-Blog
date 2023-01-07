@@ -20,9 +20,10 @@ class UserTableSeeder extends Seeder
     {
         // single manual row
         $u1 = new User;
-        $u1->name = 'Andre';
-        $u1->email = 'icecold@gmail.com'; 
-        $u1->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi';
+        $u1->name = 'ADMIN';
+        $u1->role = 'admin';
+        $u1->email = 'icecold@gmail.com';
+        $u1->password = bcrypt('mypassword');
         $u1->remember_token = 'Z5gGaw38cS5ac36';
 
         $u1->save();
@@ -34,7 +35,7 @@ class UserTableSeeder extends Seeder
         $commentsPerPost = 5;
         $commentsPerPage = 5;
         $tagsPerPost = 3;
-        
+
         // Generate tags in tags table
         $tags = Tag::factory()->count($tagsPerPost)->create();
 
