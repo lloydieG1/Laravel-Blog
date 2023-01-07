@@ -6,6 +6,12 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
+use App\FunFact;
+use App\Http\Controllers\HomeController;
+
+app()->bind(FunFact::class, function($app){
+    return new FunFact('super secret key');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class,'show'])->name('home');
 
 // admin routes
 Route::get('/tags/create', [TagController::class,'create'])->middleware(['admin'])->name('tags.create');
