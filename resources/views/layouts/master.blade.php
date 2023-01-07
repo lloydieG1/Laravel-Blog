@@ -28,6 +28,9 @@
                     <a href="/login" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Log in</a>
                     <a href="/register" class="mr-4 text-gray-800 hover:text-gray-500 no-underline">Register</a>
                 @endauth
+                @auth
+                    <p class="px-4 py-2 bg-gray-800 text-white font-bold rounded-full">User: {{Auth::user()->name}}</p>
+                @endauth
             </div>
         </nav>
         <div class="container mx-auto px-6 pt-10 pb-8">
