@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,12 +11,15 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+
         return view('posts.index', compact('posts'));
     }
 
     public function create()
     {
-        return view('posts.create');
+        $tags = Tag::all();
+
+        return view('posts.create', compact('tags'));
     }
 
     public function store(Request $request)
@@ -23,7 +27,7 @@ class PostController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'body' => 'required',
-            'tag' => 'nullable|max:30',
+            'tags' => 'array|exists:tags,id',
             'image_url' => 'image',
             'page_id' => 'required|integer'
         ]);
@@ -34,8 +38,9 @@ class PostController extends Controller
         if ($request->hasFile('image_url')) {
             $post->image_url = $request->file('image_url')->store('images', 'public');
         }
-
         $post->save();
+
+        $post->tags()->sync($validatedData['tags']);
 
         return redirect('/page/' . $validatedData['page_id']);
     }

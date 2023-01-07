@@ -11,9 +11,18 @@
             on {{ $post->created_at->format('F j, Y') }}
         </div>
     </div>
+    <div class="mb-4">
     <div class="mb-8">
-        {{ $post->body }}
-     </div>
+        <p class="resize-none w-full py-2 px-10 leading-tight text-gray-700 border rounded">
+            {{ $post->body }}
+        </p>
+    </div>
+    <div class="mb-8">
+    <span class="font-bold text-gray-700">Tags:</span>
+        @foreach ($post->tags as $tag)
+            <a href="{{ route('tags.show', ['id' => $tag->id]) }}" class="inline-block px-2 py-1 text-blue-500 rounded-full bg-gray-100 hover:bg-gray-200 hover:text-blue-600">{{ $tag->name }}</a>
+        @endforeach
+    </div>
      @auth
         @if (Auth::user()->id == $post->page->user->id || Auth::user()->role == 'admin')
             <div>
@@ -38,8 +47,6 @@
         @endif
     @endauth
     <div class="mb-8">
-    <div>
         <livewire:add-comment :model='$post' />
-    </div>
     </div>
 @endsection
