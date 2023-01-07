@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+// admin routes
+Route::get('/tags/create', [TagController::class,'create'])->middleware(['admin'])->name('tags.create');
+
+Route::post('/tags/store', [TagController::class,'store'])->middleware(['admin'])->name('tags.store');
+
+// user routes
+
+Route::get('/tags', [TagController::class,'index'])->name('tags.index');
+
+Route::get('/tags/{id}', [TagController::class,'show'])->name('tags.show');
 
 Route::get('/users', [UserController::class,'index'])->name('users.index');
 
