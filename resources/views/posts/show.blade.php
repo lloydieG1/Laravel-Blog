@@ -1,7 +1,7 @@
 
 @extends('layouts.master')
 
-@section('title', $post->title)
+@section('title', 'View Post')
 
 @section('content')
     <div class="mb-8">

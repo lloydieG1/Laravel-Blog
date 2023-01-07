@@ -26,3 +26,4 @@
         <livewire:add-comment :model='$page' />
     </div>
 @endsection
+
