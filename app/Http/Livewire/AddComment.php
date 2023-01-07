@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Comment;
-use App\Models\Post;
 
 class AddComment extends Component
 {

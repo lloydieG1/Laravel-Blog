@@ -24,14 +24,15 @@ app()->bind(FunFact::class, function($app){
 |
 */
 
-Route::get('/', [HomeController::class,'show'])->name('home');
-
 // admin routes
+
 Route::get('/tags/create', [TagController::class,'create'])->middleware(['admin'])->name('tags.create');
 
 Route::post('/tags/store', [TagController::class,'store'])->middleware(['admin'])->name('tags.store');
 
 // user routes
+
+Route::get('/', [HomeController::class,'show'])->name('home');
 
 Route::get('/tags', [TagController::class,'index'])->name('tags.index');
 

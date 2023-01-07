@@ -9,10 +9,6 @@ class Post extends Model
 {
     use HasFactory;
 
-    // protected $casts = [
-    //     'image_url' => 'string',
-    // ];
-
     protected $fillable = [
         'body',
         'image_url'
